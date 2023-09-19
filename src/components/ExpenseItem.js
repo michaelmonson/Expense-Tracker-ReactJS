@@ -1,17 +1,18 @@
 import './ExpenseItem.css';
 
-function ExpenseItem() {
+function ExpenseItem(props) {
 
-    const expenseDate = new Date(2023, 10, 22);
-    const expenseTitle = 'Car Insurance';
-    const expenseAmount = 90.44;
+    //Removing variables outside of the component (to the App.js base component)
+    // const expenseDate = new Date(2023, 10, 22);
+    // const expenseTitle = 'Car Insurance';
+    // const expenseAmount = 90.44;
 
     return (
         <div className="expense-item">
-            <div>{expenseDate.toDateString()}</div>
+            <div>{props.date.toDateString()}</div>
             <div className="expense-item__description">
-                <h2>{expenseTitle}</h2>
-                <div className="expense-item__price">${expenseAmount}</div>
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">${props.amount}</div>
             </div>
         </div>
     );
