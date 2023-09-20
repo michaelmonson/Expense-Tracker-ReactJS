@@ -7,7 +7,7 @@ function App() {
   const expenses = [
     {
       id: 'e1',
-      title: 'Toilet Paper',
+      title: 'Adopted Fox Kit',
       amount: 94.12,
       date: new Date(2020, 7, 14),
     },
