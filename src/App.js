@@ -40,9 +40,14 @@ const App = () => {
     },
   ];
 
+  const addExpenseHandler = expense => {
+    console.log('Inside of App.js component');
+    console.log(expense);
+  }
+
   return (
     <div>
-        <ExpenseItemAdd />
+        <ExpenseItemAdd onAddExpense={addExpenseHandler} />
         <ExpensesDisplay expenseList={expenses} />
     </div>
   );
