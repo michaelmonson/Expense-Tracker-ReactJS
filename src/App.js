@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ExpenseItemAdd from './components/AddExpense/ExpenseItemAdd';
 import ExpensesDisplay from './components/Expenses/ExpensesDisplay';
 
-const App = () => {
-  //switched function structure to an arrow function (anonymous)
-
   //Store Expenses in an Array:
-  const expenses = [
+  const INITIAL_EXPENSES = [
     {
       id: "e1",
       title: "Adopted Fox (baby kit)",
@@ -40,10 +37,16 @@ const App = () => {
     },
   ];
 
-  const addExpenseHandler = expense => {
-    console.log('Inside of App.js component');
-    console.log(expense);
-  }
+  
+const App = () => {    //switched "App" function to use an arrow function (anonymous)
+
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((previousExpenses) => {
+      return [expense, ...previousExpenses];
+    });
+  };
 
   return (
     <div>
@@ -52,14 +55,18 @@ const App = () => {
     </div>
   );
 
-    // NOTE:  For a comparison, the JSX code above is 'syntactic sugar' for what is really happening (see below)
-
+    /* 
+     * For an insight comparison, the JSX code we are able to use above is 
+     * 'syntactic sugar' for what is REALLY happening below (vanilla JavaScript code)
+     */ 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // return React.createElement(
     //   'div',
     //   {},
     //   React.createElement('h2', {}, "Let's get started!"),
     //   React.createElement(ExpensesDisplay, {items = {expenseList})
     // );
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    
 };
 
 export default App;

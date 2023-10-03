@@ -18,7 +18,10 @@ function ExpensesDisplay(props) {
          <Card className="expenses">
             
             {/* Pass in 'filteredYear' as selected: An example of React's 'two-way' binding */}
-            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+            <ExpensesFilter 
+               selected={filteredYear} 
+               onChangeFilter={filterChangeHandler} 
+            />
             
             { 
               /* ReactJS is capable of rendering an array of objects.  For instance, 
