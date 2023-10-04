@@ -21,35 +21,35 @@ function ExpensesDisplay(props) {
       return expense.date.getFullYear().toString() === filteredYear;
    })
 
+   //Check for content:
+   let expensesContent = <p>No expenses were found for {filteredYear}</p>
+
+   if (filteredExpenses.length > 0) {
+      { /* ReactJS is capable of rendering an array of objects.  That is what we will do here!
+         * Below we are mapping an array of objects into an array of <ExpenseItem /> components.
+         * This works because React knows how to render an array of JSX elements in this manner:
+         *    { [<Card />, <Card />, <Card />] }
+         */
+      }
+      expensesContent = filteredExpenses.map((expense) => (
+         <ExpenseItem
+            key = {expense.id}
+            title = {expense.title}
+            amount = {expense.amount}
+            date = {expense.date}
+         />
+      ));
+   }
+
    return (
       <div>
-         <Card className="expenses">
-            
+         <Card className="expenses">            
             {/* Pass in 'filteredYear' as selected: An example of React's 'two-way' binding */}
             <ExpensesFilter 
                selected={filteredYear} 
                onChangeFilter={filterChangeHandler} 
             />
-            
-            { /* ReactJS is capable of rendering an array of objects.  That is what we will do here!
-               * Below we are mapping an array of objects into an array of <ExpenseItem /> components.
-               * This works because React knows how to render an array of JSX elements in this manner:
-               *    { [<Card />, <Card />, <Card />] }
-               */ 
-            }
-            {filteredExpenses.length === 0 ? (
-               <p>No Expenses Found.</p>
-            ) : (
-               filteredExpenses.map((expense) => (
-                  <ExpenseItem
-                     key = {expense.id}
-                     title = {expense.title}
-                     amount = {expense.amount}
-                     date = {expense.date}
-                  />
-               ))
-            )}
-
+            {expensesContent}
          </Card>
       </div>
    );
