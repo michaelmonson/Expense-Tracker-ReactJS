@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import ExpenseItemAdd from './components/AddExpense/ExpenseItemAdd';
 import ExpensesDisplay from './components/Expenses/ExpensesDisplay';
+import Header from './components/Header';
 
 //Store Expenses in an Array:
 const INITIAL_EXPENSES = [
@@ -50,6 +51,7 @@ const App = () => {
 
    return (
       <div>
+         <Header />
          <ExpenseItemAdd onAddExpense={addExpenseHandler} />
          <ExpensesDisplay expenseList={expenses} />
       </div>
